@@ -14,11 +14,10 @@ class Calculator {
 
 
   delete() {
+    this.currentOperand = this.currentOperand.toString().slice(0,-1)
   }
   
-
-
-   appendNumber(number) {
+  appendNumber(number) {
     if (number ==='.' && this.currentOperand.includes('.'))return
     this.currentOperand = this.currentOperand.toString()+ number.toString();
   }
@@ -33,8 +32,7 @@ class Calculator {
     this.currentOperand = '';
   } 
 
-  
-  compute() {
+   compute() {
     let computation
     const prev = parseFloat(this.previousOperand)
     const current = parseFloat(this.currentOperand)
@@ -99,6 +97,20 @@ equalsButton.addEventListener('click', button => {
   calculator.compute()
   calculator.updateDisplay();
 })
+
+allClearButton.addEventListener('click', button => {
+  calculator.clear()
+  calculator.updateDisplay();
+})
+
+deleteButton.addEventListener('click', button => {
+  calculator.delete()
+  calculator.updateDisplay();
+})
+
+
+
+
 
 
 
