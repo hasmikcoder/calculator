@@ -12,11 +12,13 @@ class Calculator {
     this.operation = undefined
   }
 
+  //chopping off the last number in the string
+  
 
   delete() {
     this.currentOperand = this.currentOperand.toString().slice(0,-1)
   }
-  
+
   appendNumber(number) {
     if (number ==='.' && this.currentOperand.includes('.'))return
     this.currentOperand = this.currentOperand.toString()+ number.toString();
@@ -60,12 +62,15 @@ class Calculator {
 
   
 
-  
+  //adding the concatenation/template literal/ to see the operation next to previousOperand
   updateDisplay() {
-    this.currentOperandTextElement.innerText = this.currentOperand;
-    this.previousOperandTextElement.innerText= this.previousOperand;
-  }
+    this.currentOperandTextElement.innerText = this.currentOperand
+    if (this.operation != null) {
+    this.previousOperandTextElement.innerText= 
+    `${this.previousOperand} ${this.operation}`
 
+    }
+  }
 }
 
 
@@ -107,7 +112,6 @@ deleteButton.addEventListener('click', button => {
   calculator.delete()
   calculator.updateDisplay();
 })
-
 
 
 
